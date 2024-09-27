@@ -1,0 +1,47 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row my-3 mx-2">
+    <div class="col-4">
+        <div class="card card-body">
+            <h3 class="text-center">Total Orders</h3>
+            <h2 class="text-center">{{ order_total }}</h2>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card card-body">
+            <h3 class="text-center">Orders Delivered</h3>
+            <h2 class="text-center">{{ order_delivered }}</h2>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card card-body">
+            <h3 class="text-center">Pending</h3>
+            <h2 class="text-center">{{ order_pending }}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="card card-body mx-2">
+    <table class="table">
+        <tr>
+            <th>Product</th>
+            <th>Note</th>
+            <th>Date Ordered</th>
+            <th></th>
+            <th>Status</th>
+        </tr>
+        {% for order in orders %}
+            <tr>
+                <td>{{order.product.name}}</td>
+                <td>{{order.note}}</td>
+                <td>{{order.date_created}}</td>
+                <td></td>
+                <td>{{order.status}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

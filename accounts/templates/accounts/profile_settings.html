@@ -1,0 +1,22 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-3 me-3">
+        <div class="card card-body p-3">
+            <h3>Profile Settings</h3>
+            <img src="{{request.user.customer.profile_pic.url}}" class="profile-pic rounded">
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div class="card card-body p-9">
+            <h3>Edit Profile details</h3>
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" name="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
